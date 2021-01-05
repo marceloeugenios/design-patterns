@@ -8,23 +8,27 @@ import br.com.design.patterns.strategy.impl.XmlReader;
 
 public class Main {
 
+	/**
+	 * O foco principal deste pattern é permitir uma variação de implementação baseado na classe concreta que implementa a interface comum.
+	 */
+	
 	public static void main(String[] args) {
 
-		IReadable readable = new ExcelReader();
-		FileReader r = new FileReader(readable);
-		new DataPersist(r.read("/opt/my-file.xls")).printData();
+		IReadable readable      = new ExcelReader();
+		DataPersist dataPersist = new DataPersist(new FileReader(readable).read("/opt/my-file.xls"));
+		dataPersist.printData();
 
-		readable = new TextReader();
-		r = new FileReader(readable);
-		new DataPersist(r.read("/opt/my-file.txt")).printData();
+		readable    = new TextReader();
+		dataPersist = new DataPersist(new FileReader(readable).read("/opt/my-file.txt"));
+		dataPersist.printData();
 
-		readable = new CsvReader();
-		r = new FileReader(readable);
-		new DataPersist(r.read("/opt/my-file.csv")).printData();
-		
-		readable = new XmlReader();
-		r = new FileReader(readable);
-		new DataPersist(r.read("/opt/my-file.xml")).printData();
+		readable    = new CsvReader();
+		dataPersist = new DataPersist(new FileReader(readable).read("/opt/my-file.csv"));
+		dataPersist.printData();
+
+		readable    = new XmlReader();
+		dataPersist = new DataPersist(new FileReader(readable).read("/opt/my-file.xml"));
+		dataPersist.printData();
 
 	}
 }
