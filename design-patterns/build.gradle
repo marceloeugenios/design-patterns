@@ -14,6 +14,10 @@ repositories {
 
 dependencies {
 
+
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+	implementation group: 'org.javatuples', name: 'javatuples', version: '1.2'
+
 	compileOnly 'org.projectlombok:lombok:1.18.12'
 	annotationProcessor 'org.projectlombok:lombok:1.18.12'
 	
@@ -22,6 +26,8 @@ dependencies {
 
 	implementation 'org.springframework.boot:spring-boot-starter'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation group: 'com.github.javafaker', name: 'javafaker', version: '1.0.2'
+	
 }
 
 test {
